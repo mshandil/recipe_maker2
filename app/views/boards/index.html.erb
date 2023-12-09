@@ -1,30 +1,47 @@
 <div>
   <div>
     <h1>
-      All boards
+      Recipe diary
     </h1>
   </div>
 </div>
 
 <hr>
 
+
+
+<hr>
+
 <div>
   <div>
     <h2>
-      Add a new board
+      Add a new recipe
     </h2>
 
-    <form action="/insert_board" method="post">
+    <form action="/insert_recipe" method="post">
       <div>
-        <label for="name_box">
-          Name
+        <label for="recipe_name">
+          Recipe Name
         </label>
+        <input type="text" id="recipe_name" name="recipe_name">
+      </div>
 
-        <input type="text" id="name_box" name="query_name">
+      <div>
+        <label for="category">
+          Category
+        </label>
+        <input type="text" id="category" name="category">
+      </div>
+
+      <div>
+        <label for="calories">
+          Calories
+        </label>
+        <input type="text" id="calories" name="calories">
       </div>
 
       <button>
-        Add board
+        Add Recipe
       </button>
     </form>
   </div>
@@ -33,10 +50,10 @@
 <hr>
 
 <ul>
-  <% @list_of_boards.each do |a_board| %>
+  <% @list_of_recipes.each do |a_recipe| %>
     <li>
-      <a href="/boards/<%= a_board.id %>">
-        <%= a_board.name %>
+      <a href="/recipes/<%= a_recipe.id %>">
+        <%= a_recipe.recipe_name %>
       </a>
     </li>
   <% end %>

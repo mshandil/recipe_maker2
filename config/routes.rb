@@ -1,6 +1,45 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: "boards#index"
+  root to: "lists#index"
+  # Routes for the Recipe resource:
+
+  # CREATE
+  post("/insert_recipe", { :controller => "recipes", :action => "create" })
+          
+  # READ
+  get("/recipes", { :controller => "recipes", :action => "index" })
+  
+  get("/recipes/:path_id", { :controller => "lists", :action => "show" })
+  
+  # UPDATE
+  
+  post("/modify_recipe/:path_id", { :controller => "recipes", :action => "update" })
+  
+  # DELETE
+  get("/delete_recipe/:path_id", { :controller => "recipes", :action => "destroy" })
+
+  #------------------------------
+
+  # Routes for the List resource:
+
+  # CREATE
+  post("/insert_list", { :controller => "lists", :action => "create" })
+          
+  # READ
+  get("/lists", { :controller => "lists", :action => "index" })
+  
+  get("/lists/:path_id", { :controller => "lists", :action => "show" })
+  
+  # UPDATE
+  
+  post("/modify_list/:path_id", { :controller => "lists", :action => "update" })
+  
+  # DELETE
+  get("/delete_list/:path_id", { :controller => "lists", :action => "destroy" })
+
+  #------------------------------
+
+
   #get("/", { :controller => "boards", :action => "index" })
 
   # Routes for the Post resource:

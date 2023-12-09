@@ -1,0 +1,116 @@
+<div>
+  <div>
+    <h1>
+      Recipe <%= @the_list.recipe_name %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/lists">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_list/<%= @the_list.id %>">
+          Delete list
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Creator
+      </dt>
+      <dd>
+        <%= @the_list.creator_id %>
+      </dd>
+
+      <dt>
+        Recipe name
+      </dt>
+      <dd>
+        <%= @the_list.recipe_name %>
+      </dd>
+
+      <dt>
+        Category
+      </dt>
+      <dd>
+        <%= @the_list.category %>
+      </dd>
+
+      <dt>
+        Calories
+      </dt>
+      <dd>
+        <%= @the_list.calories %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_list.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_list.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Edit list
+    </h2>
+
+    <form action="/modify_list/<%= @the_list.id %>"  method="post" >
+      <div>
+        <label for="creator_id_box">
+          Creator
+        </label>
+
+        <input type="text" id="creator_id_box" name="query_creator_id" value="<%= @the_list.creator_id %>">
+      </div>
+
+      <div>
+        <label for="recipe_name_box">
+          Recipe name
+        </label>
+
+        <input type="text" id="recipe_name_box" name="query_recipe_name" value="<%= @the_list.recipe_name %>">
+      </div>
+
+      <div>
+        <label for="category_box">
+          Category
+        </label>
+
+        <input type="text" id="category_box" name="query_category" value="<%= @the_list.category %>">
+      </div>
+
+      <div>
+        <label for="calories_box">
+          Calories
+        </label>
+
+        <input type="text" id="calories_box" name="query_calories" value="<%= @the_list.calories %>">
+      </div>
+
+      <button>
+        Update list
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

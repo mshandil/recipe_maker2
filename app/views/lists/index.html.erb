@@ -1,0 +1,117 @@
+<style>
+  body {
+    background-color: #f0f0f0; /* Background color */
+    font-family: Arial, sans-serif; /* Font family */
+    color: #333; /* Text color */
+    margin: 0;
+    padding: 0;
+  }
+
+  h1 {
+    text-align: center; /* Center the heading */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Change font for heading */
+    color: #004080; /* Heading color */
+    margin-top: 20px;
+  }
+
+  h2 {
+    color: #006633; /* Heading color */
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  th {
+    background-color: #f2f2f2; /* Table header background color */
+    color: #333; /* Table header text color */
+  }
+
+  tr:hover {
+    background-color: #f5f5f5; /* Hover color */
+  }
+
+  a {
+    text-decoration: none; /* Remove underline from links */
+    color: #0066cc; /* Link color */
+  }
+</style>
+
+<div>
+  <div>
+    <h1>Recipe Diary</h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>Add a new recipe</h2>
+    <form action="/insert_recipe" method="post">
+      <table>
+        <tr>
+          <td><label for="recipe_id_box">Recipe:</label></td>
+          <td><input type="text" id="recipe_id_box" name="query_recipe_id"></td>
+        </tr>
+        <tr>
+          <td><label for="ingredients_box">Ingredients:</label></td>
+          <td><input type="text" id="ingredients_box" name="query_ingredients"></td>
+        </tr>
+        <tr>
+          <td><label for="cook_time_box">Cook time:</label></td>
+          <td><input type="text" id="cook_time_box" name="query_cook_time"></td>
+        </tr>
+        <tr>
+          <td><label for="calories_box">Calories:</label></td>
+          <td><input type="text" id="calories_box" name="query_calories"></td>
+        </tr>
+        <tr>
+          <td><label for="category_box">Category:</label></td>
+          <td><input type="text" id="category_box" name="query_category"></td>
+        </tr>
+      </table>
+      <button>Create recipe</button>
+    </form>
+  </div>
+</div>
+
+
+<hr>
+
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>ID</th>
+        <th>Recipe</th>
+        <th>Category</th>
+        <th>Calories</th>
+        <th>Created at</th>
+        <th>Updated at</th>
+        <th></th>
+      </tr>
+
+      <% @full_list.each do |a_recipe| %>
+      <tr>
+        <td><%= a_recipe.id %></td>
+        <td><a href="/recipes/<%= a_recipe.id %>"><%= a_recipe.recipe_name %></a></td>
+        <td><%= a_recipe.category %></td>
+        <td><%= a_recipe.calories %></td>
+        <td><%= time_ago_in_words(a_recipe.created_at) %> ago</td>
+        <td><%= time_ago_in_words(a_recipe.updated_at) %> ago</td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

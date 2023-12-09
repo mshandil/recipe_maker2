@@ -10,12 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_09_170404) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_09_211616) do
   create_table "boards", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+  end
+
+  create_table "lists", force: :cascade do |t|
+    t.integer "creator_id"
+    t.string "recipe_name"
+    t.string "category"
+    t.string "calories"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "posts", force: :cascade do |t|
@@ -26,6 +35,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_09_170404) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+  end
+
+  create_table "recipes", force: :cascade do |t|
+    t.integer "recipe_id"
+    t.string "ingredients"
+    t.string "cook_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "recipe_name"
   end
 
   create_table "users", force: :cascade do |t|

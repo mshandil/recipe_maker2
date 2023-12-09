@@ -1,39 +1,75 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Bulletin Board 2</title>
+    <title>Recipe Maker</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif; /* Change font for the body */
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0; /* Body background color */
+        color: #333; /* Body text color */
+      }
+
+      nav {
+        background-color: #004080; /* Navigation background color */
+        color: white; /* Navigation text color */
+        padding: 10px;
+        text-align: center;
+      }
+
+      nav a {
+        color: white; /* Link color */
+        margin: 0 10px;
+        text-decoration: none;
+      }
+
+      hr {
+        border: none;
+        border-top: 1px solid #ddd; /* Horizontal line color */
+        margin-top: 20px;
+      }
+
+      .success-message {
+        color: green; /* Success message color */
+      }
+
+      .error-message {
+        color: red; /* Error message color */
+      }
+    </style>
   </head>
 
   <body>
     <nav>
-      <a href="/">Bulletin Board</a>
+      <a href="/">Recipe Maker</a>
 
-      <% if current_user !=nil %>
-      <a href="/users/sign_out">Sign out</a>
-      <a href="/users/edit">Edit profile</a>
-
+      <% if current_user != nil %>
+        <a href="/users/sign_out">Sign out</a>
+        <a href="/users/edit">Edit profile</a>
       <% else %>
-      <a href="/users/sign_up">Sign up</a>
-      <a href="/users/sign_in">Sign in</a>
-      <%end%>
+        <a href="/users/sign_up">Sign up</a>
+        <a href="/users/sign_in">Sign in</a>
+      <% end %>
     </nav>
 
     <hr>
 
     <% if notice.present? %>
-      <div style="color: green">
+      <div class="success-message">
         <%= notice %>
       </div>
     <% end %>
 
     <% if alert.present? %>
-      <div style="color: red">
+      <div class="error-message">
         <%= alert %>
       </div>
     <% end %>

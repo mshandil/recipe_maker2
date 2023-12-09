@@ -1,8 +1,8 @@
 class BoardsController < ApplicationController
   def index
-    matching_boards = Board.all
+    matching_boards = Recipe.all
 
-    @list_of_boards = matching_boards.order({ :created_at => :desc })
+    @list_of_recipes = matching_boards.order({ :created_at => :desc })
 
     render({ :template => "boards/index" })
   end
